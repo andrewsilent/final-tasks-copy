@@ -13,7 +13,8 @@ module.exports = {
           displayName: 'buyer',
           passwordHash: await bcrypt.hashSync('Test1234', SALT_ROUNDS),
           email: 'buyer@mail.com',
-          role: 'customer'
+          role: 'customer',
+          balance: 4750
         },
         {
           firstName: 'Creator',
@@ -21,7 +22,8 @@ module.exports = {
           displayName: 'creator',
           passwordHash: await bcrypt.hashSync('Test1234', SALT_ROUNDS),
           email: 'creator@mail.com',
-          role: 'creator'
+          role: 'creator',
+          balance: 150
         }
       ],
       {}
@@ -29,9 +31,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+     await queryInterface.bulkDelete('Users', null, {});
   }
 };

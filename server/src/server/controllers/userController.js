@@ -7,6 +7,7 @@ const NotUniqueEmail = require('../errors/NotUniqueEmail');
 const controller = require('../../socketInit');
 const userQueries = require('./queries/userQueries');
 const bankQueries = require('./queries/bankQueries');
+const { saveTransaction } = require('../middlewares/saveTransactionMw');
 const ratingQueries = require('./queries/ratingQueries');
 
 module.exports.login = async (req, res, next) => {
@@ -196,6 +197,11 @@ module.exports.cashout = async (req, res, next) => {
       }
     },
     transaction);
+    transaction.afterCommit(()=>{
+      req.operationType = 'CONSUMPTION';
+      req.target = req.tokenData.userId
+      saveTransaction(req, res, next);
+    })
     transaction.commit();
     res.send({ balance: updatedUser.balance });
   } catch (err) {

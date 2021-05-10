@@ -2,6 +2,7 @@ const db = require('../models/index');
 const ServerError = require('../errors/ServerError');
 const contestQueries = require('./queries/contestQueries');
 const userQueries = require('./queries/userQueries');
+const { saveTransaction } = require('../middlewares/saveTransactionMw');
 const controller = require('../../socketInit');
 const UtilFunctions = require('../utils/functions');
 const CONSTANTS = require('../../constants');
@@ -239,6 +240,15 @@ module.exports.setOfferStatus = async (req, res, next) => {
         req.body.priority,
         transaction
       );
+      transaction.afterCommit(async ()=>{
+        req.operationType = 'INCOME';
+        req.target = req.body.creatorId;
+        const contest = await db.Contest.findOne({
+          where: { id: req.body.contestId },
+        })
+        req.body.sum = contest.prize;
+        await saveTransaction(req, res, next);
+      });
       res.send(winningOffer);
     } catch (err) {
       console.log('>>>>>>>', err);

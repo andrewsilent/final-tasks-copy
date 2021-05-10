@@ -13,7 +13,7 @@ async function hashPassword (user, options) {
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate ({ Offer, Contest, Rating, RefreshToken }) {
+    static associate ({ Offer, Contest, Rating, RefreshToken, Transaction }) {
       User.hasMany(Offer, {
         foreignKey: 'userId',
         targetKey: 'id'
@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       });
       User.hasMany(RefreshToken, {
         foreignKey: 'userId'
+      });
+      User.hasMany(Transaction, {
+        foreignKey: 'userId',
       });
     }
 

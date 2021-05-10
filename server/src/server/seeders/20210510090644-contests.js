@@ -1,0 +1,82 @@
+'use strict';
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert(
+      'Contests',
+      [
+        {
+          id: 1,
+          userId: 1,
+          contestType: 'name',
+          fileName: null,
+          originalFileName: null,
+          title: 'Contest #1',
+          typeOfName: 'Company',
+          industry: 'Builders',
+          focusOfWork: 'building company',
+          targetCustomer: 'building company customers',
+          styleName: 'Classic',
+          nameVenture: null,
+          typeOfTagline: null,
+          status: 'finished',
+          brandStyle: null,
+          prize: '100',
+          priority: 1,
+          orderId: '926694c0-b16d-11eb-be7e-21b4c10397ec',
+          createdAt: '2021-05-10 08:56:00+00',
+          updatedAt: '2021-05-10 08:57:55.39+00',
+        },
+        {
+          id: 2,
+          userId: 1,
+          contestType: 'name',
+          fileName: null,
+          originalFileName: null,
+          title: 'Contest #2',
+          typeOfName: 'Product',
+          industry: 'Skin care',
+          focusOfWork: 'Some skin care company',
+          targetCustomer: 'Some skin care customers',
+          styleName: 'Professional',
+          nameVenture: null,
+          typeOfTagline: null,
+          status: 'finished',
+          brandStyle: null,
+          prize: '100',
+          priority: 1,
+          orderId: 'ad063970-b16d-11eb-be7e-21b4c10397ec',
+          createdAt: '2021-05-10 08:56:00+00',
+          updatedAt: '2021-05-10 08:58:07.726+00',
+        },
+        {
+          id: 3,
+          userId: 1,
+          contestType: 'name',
+          fileName: null,
+          originalFileName: null,
+          title: 'Contest #3',
+          typeOfName: 'Project',
+          industry: 'Biotech',
+          focusOfWork: 'Some biotech company',
+          targetCustomer: 'Some biotech company customers',
+          styleName: 'Any',
+          nameVenture: null,
+          typeOfTagline: null,
+          status: 'active',
+          brandStyle: null,
+          prize: '100',
+          priority: 1,
+          orderId: 'eccf43d0-b16d-11eb-be7e-21b4c10397ec',
+          createdAt: '2021-05-10 08:58:00+00',
+          updatedAt: '2021-05-10 08:58:44.749+00',
+        },
+      ],
+      {}
+    );
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('Contests', null, {});
+  },
+};

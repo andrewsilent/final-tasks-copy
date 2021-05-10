@@ -8,6 +8,7 @@ const validators = require('../middlewares/validators');
 const chatController = require('../controllers/chatController');
 const upload = require('../utils/fileUpload');
 const authRouter = require('./auth');
+const HistoryController = require('../controllers/historyControllers')
 const { checkAccessToken } = require('../middlewares/tokenMw');
 const router = express.Router();
 
@@ -151,5 +152,7 @@ router.post(
 );
 
 router.post('/getCatalogs',  chatController.getCatalogs);
+
+router.get('/history',  HistoryController.getTransactions);
 
 module.exports = router;

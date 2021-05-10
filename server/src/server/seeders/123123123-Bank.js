@@ -22,14 +22,14 @@ module.exports = {
           name: SQUADHELP_BANK_NAME,
           expiry: SQUADHELP_BANK_EXPIRY,
           cvc: SQUADHELP_BANK_CVC,
-          balance: 0
+          balance: 250
         },
         {
           cardNumber: '4111111111111111',
           name: 'yriy',
           expiry: '12/22',
           cvc: '500',
-          balance: 50000
+          balance: 150
         }
       ],
       {}
