@@ -9,9 +9,9 @@ import {connect} from 'react-redux';
 const Dashboard = (props) => {
     const {role, history} = props;
 
-    if (role !== CONSTANTS.CUSTOMER || role !== CONSTANTS.CREATOR) {
-        props.history.replace('/login');
-    }
+    // if (role !== CONSTANTS.CUSTOMER || role !== CONSTANTS.CREATOR) {
+    //     props.history.replace('/login');
+    // }
 
     return (
         <div>

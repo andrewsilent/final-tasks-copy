@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {
     getContestsForCreative,
@@ -140,6 +140,10 @@ class CreatorDashboard extends React.Component {
         this.props.history.push('/contest/' + contestId);
     };
 
+    goToHistory = () => {
+        this.props.history.push('/history');
+    };
+
     tryLoadAgain = () => {
         this.props.clearContestsList();
         this.props.getContests({limit: 8, offset: 0, ...this.getPredicateOfRequest()});
@@ -151,6 +155,12 @@ class CreatorDashboard extends React.Component {
         const {isFetching} = this.props.dataForContest;
         return (
             <div className={styles.mainContainer}>
+                <div className={styles.sidebar}>
+                <div className={styles.historyContainer}>
+                    <button className={styles.button} onClick={()=>this.goToHistory()}>
+                        Transaction History
+                    </button>
+                </div>
                 <div className={styles.filterContainer}>
                     <span className={styles.headerFilter}>Filter Results</span>
                     <div className={styles.inputsContainer}>
@@ -186,6 +196,7 @@ class CreatorDashboard extends React.Component {
                             </select>
                         </div>
                     </div>
+                </div>
                 </div>
                 {
                     error ?

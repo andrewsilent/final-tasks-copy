@@ -436,3 +436,23 @@ export const changeModalShow=(data)=>{
         data: data
     }
 };
+
+export const getTransactionsHistoryRequest=()=>{
+    return {
+        type: ACTION.GET_TRANSACTIONS_HISTORY_REQUEST,
+    }
+}
+
+export const getTransactionsHistorySuccess=({history})=>{
+    return {
+        type: ACTION.GET_TRANSACTIONS_HISTORY_SUCCESS,
+        history: history
+    }
+}
+
+export const getTransactionsHistoryError=(data)=>{
+    return {
+        type: ACTION.GET_TRANSACTIONS_HISTORY_ERROR,
+        data: data
+    }
+}

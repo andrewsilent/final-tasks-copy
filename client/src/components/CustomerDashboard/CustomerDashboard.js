@@ -7,6 +7,7 @@ import ContestBox from "../ContestBox/ContestBox";
 import styles from './CustomerDashboard.module.sass';
 import classNames from 'classnames';
 import TryAgain from '../../components/TryAgain/TryAgain';
+import { Link } from 'react-router-dom';
 
 
 class CustomerDashboard extends React.Component {
@@ -40,6 +41,10 @@ class CustomerDashboard extends React.Component {
         this.props.history.push('/contest/' + contest_id);
     };
 
+    goToHistory = () => {
+        this.props.history.push('/history');
+    };
+
 
     setContestList = () => {
         const array = [];
@@ -66,6 +71,12 @@ class CustomerDashboard extends React.Component {
         const {customerFilter} = this.props;
         return (
             <div className={styles.mainContainer}>
+                <div className={styles.sidebar}>
+                {/* <div className={styles.historyContainer}>
+                    <button className={styles.button} onClick={()=>this.goToHistory()}>
+                        Transaction History
+                    </button>
+                </div> */}
                 <div className={styles.filterContainer}>
                     <div onClick={() => this.props.newFilter(CONSTANTS.CONTEST_STATUS_ACTIVE)}
                          className={classNames({
@@ -85,6 +96,7 @@ class CustomerDashboard extends React.Component {
                              [styles.filter]: CONSTANTS.CONTEST_STATUS_PENDING !== customerFilter
                          })}>Inactive contests
                     </div>
+                </div>
                 </div>
                 <div className={styles.contestsContainer}>
                     {

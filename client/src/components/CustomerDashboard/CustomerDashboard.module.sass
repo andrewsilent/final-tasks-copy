@@ -27,46 +27,68 @@
     justify-content: center
     width: 100%
     margin-top: 15px
-  .filterContainer
-    min-width: 250px
-    height: 350px
-    padding-top: 30px
-    margin-right: 50px
+  .sidebar
     display: flex
     flex-direction: column
-    box-shadow: 0 5px 10px 3px rgba(0,0,0,0.1)
-    align-items: flex-start
-    background-color: white
-    margin-bottom: 15px
-    @media(max-width: 1000px)
-      padding-top: 10px
-      flex-direction: row
-      margin-right: 0
-      justify-content: center
-      height: 80px
-    .filter
-      margin-top: 15px
-      align-self: stretch
-      text-align: center
+    .historyContainer,
+    .filterContainer
+      min-width: 250px
+      margin-right: 50px
+      margin-bottom: 15px
+    .historyContainer
       color: #46568a
-      font-size: 18px
-      border-radius: 10px
-      padding: 10px
+      .button
+        transition: 0.5s background-color
+        margin-top: 15px
+        align-self: stretch
+        text-align: center
+        width: 100%
+        border: 1px solid #4e618d
+        font-size: 18px
+        border-radius: 10px
+        padding: 10px
+        color: #4e618d
+        background-color: white
+        &:hover
+          color: white;
+          background-color: #4e618d
+    .filterContainer
+      height: 350px
+      padding-top: 30px
+      background-color: white
+      box-shadow: 0 5px 10px 3px rgba(0,0,0,0.1)
+      display: flex
+      flex-direction: column
+      align-items: flex-start
       @media(max-width: 1000px)
-        height: 20px
-        margin: 0 5px
-      &:hover
-        background-color: #eefaea
-    .activeFilter
-      transition: 0.5s background-color
-      margin-top: 15px
-      align-self: stretch
-      text-align: center
-      font-size: 18px
-      border-radius: 10px
-      padding: 10px
-      background-color: #4e618d
-      color: white
-      @media(max-width: 1000px)
-        height: 20px
-        margin: 0 5px
+        padding-top: 10px
+        flex-direction: row
+        margin-right: 0
+        justify-content: center
+        height: 80px
+      .filter
+        margin-top: 15px
+        align-self: stretch
+        text-align: center
+        color: #46568a
+        font-size: 18px
+        border-radius: 10px
+        padding: 10px
+        @media(max-width: 1000px)
+          height: 20px
+          margin: 0 5px
+        &:hover
+          background-color: #eefaea
+      .activeFilter
+        transition: 0.5s background-color
+        margin-top: 15px
+        align-self: stretch
+        text-align: center
+        font-size: 18px
+        border-radius: 10px
+        padding: 10px
+        background-color: #4e618d
+        color: white
+        @media(max-width: 1000px)
+          height: 20px
+          margin: 0 5px

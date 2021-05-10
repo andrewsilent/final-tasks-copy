@@ -26,10 +26,13 @@ import {
     changeCatalogName
 } from './chatSagas';
 
+import {getTransactionsHistory} from './transactionsSaga';
+
 function* rootSaga() {
     yield  takeLatest(ACTION.AUTH_ACTION_REGISTER, registerSaga);
     yield  takeLatest(ACTION.AUTH_ACTION_LOGIN, loginSaga);
     // yield  takeEvery(ACTION.GET_USER_ACTION, privateSaga);
+    yield  takeLatest(ACTION.GET_TRANSACTIONS_HISTORY_REQUEST, getTransactionsHistory);
     yield  takeEvery(ACTION.GET_DATA_FOR_CONTEST_ACTION, dataForContestSaga);
     yield  takeLatest(ACTION.PAYMENT_ACTION, paymentSaga);
     yield  takeLatest(ACTION.CASHOUT_ACTION, cashoutSaga);
